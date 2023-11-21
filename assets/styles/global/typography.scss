@@ -1,0 +1,190 @@
+@use './utilities.scss';
+
+$size-display-x-large: utilities.rem(42px);
+$size-display-large: utilities.rem(28px);
+$size-display-medium: utilities.rem(26px);
+$size-display-small: utilities.rem(20px);
+$size-heading: utilities.rem(16px);
+$size-subheading: utilities.rem(12px);
+$size-body: utilities.rem(14px);
+$size-caption: utilities.rem(12px);
+
+$font-sizes: (
+  display-x-large: $size-display-x-large,
+  display-large: $size-display-large,
+  display-medium: $size-display-medium,
+  display-small: $size-display-small,
+  heading: $size-heading,
+  subheading: $size-subheading,
+  body: $size-body,
+  caption: $size-caption
+);
+
+$line-heights: (
+  display-x-large: rem(44px),
+  display-large: rem(32px),
+  display-medium: rem(32px),
+  display-small: rem(28px),
+  heading: rem(24px),
+  subheading: rem(16px),
+  body: rem(20px),
+  caption: rem(16px)
+);
+
+$font-weights: (
+  display-x-large: 600,
+  display-large: 600,
+  display-medium: 400,
+  display-small: 400,
+  heading: 600,
+  subheading: 600,
+  body: 400,
+  semibold: 600,
+  caption: 400
+);
+
+/**
+ * Map sizes to Bulma defaults
+ */
+$size-1: $size-display-x-large;
+$size-2: $size-display-large;
+$size-3: $size-display-medium;
+$size-4: $size-display-small;
+$size-5: $size-subheading;
+$size-6: $size-body;
+$size-7: $size-caption;
+
+$size-small: $size-caption;
+$size-normal: $size-body;
+$size-medium: $size-display-small;
+$size-large: $size-display-large;
+
+@function font-size($size: body) {
+  @return map-get($font-sizes, $size);
+}
+
+@function line-height($size: body) {
+  @return map-get($line-heights, $size);
+}
+
+@function font-weight($size: body) {
+  @return map-get($font-weights, $size);
+}
+
+@mixin text-style-caption {
+  font-size: font-size(caption);
+  font-weight: font-weight(caption);
+  line-height: line-height(caption);
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+@mixin text-style-heading {
+  font-size: font-size(heading);
+  font-weight: font-weight(heading);
+  line-height: line-height(heading);
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+@mixin text-style-subheading {
+  font-size: font-size(subheading);
+  font-weight: font-weight(subheading);
+  line-height: line-height(subheading);
+  text-transform: uppercase;
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+@mixin text-style-input {
+  font-size: font-size(input);
+  font-weight: font-weight(body);
+  line-height: line-height(input);
+
+  text-transform: initial;
+  letter-spacing: initial;
+}
+
+@mixin text-style-body {
+  font-size: font-size(body);
+  font-weight: font-weight(body);
+  line-height: line-height(body);
+  font-family: 'Lato', Fallback, sans-serif;
+  text-transform: initial;
+  letter-spacing: initial;
+}
+
+@mixin text-style-button {
+  font-size: font-size(button);
+  font-weight: font-weight(button);
+  line-height: line-height(button);
+
+  text-transform: initial;
+  letter-spacing: initial;
+}
+
+@mixin text-style-button-large {
+  font-size: font-size(button-large);
+  font-weight: font-weight(button-large);
+  line-height: line-height(button-large);
+
+  text-transform: initial;
+  letter-spacing: initial;
+}
+
+@mixin text-style-display-x-large {
+  font-size: font-size(display-x-large);
+  font-weight: font-weight(display-x-large);
+  line-height: line-height(display-x-large);
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+@mixin text-style-display-large {
+  font-size: font-size(display-large);
+  font-weight: font-weight(display-large);
+  line-height: line-height(display-large);
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+@mixin text-style-display-medium {
+  font-size: font-size(display-medium);
+  font-weight: font-weight(display-medium);
+  line-height: line-height(display-medium);
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+@mixin text-style-display-small {
+  font-size: font-size(display-small);
+  font-weight: font-weight(display-small);
+  line-height: line-height(display-small);
+  font-family: 'Oswald', Fallback, sans-serif;
+}
+
+.headings-caption {
+  @include text-style-caption();
+}
+
+.headings-heading {
+  @include text-style-heading();
+}
+
+.headings-subheading {
+  @include text-style-subheading();
+}
+
+.headings-display-small {
+  @include text-style-display-small();
+}
+
+.headings-display-medium {
+  @include text-style-display-medium();
+}
+
+.headings-display-large {
+  @include text-style-display-large();
+}
+
+.headings-display-x-large {
+  @include text-style-display-x-large();
+}
+
+p {
+  @include text-style-body();
+}

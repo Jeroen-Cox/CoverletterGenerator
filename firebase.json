@@ -1,0 +1,20 @@
+{
+  "projects": {
+    "default": "covergp-f0018"
+  },
+  "hosting": {
+    "public": ".output/public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "server"
+      }
+    ]
+  },
+  "functions": {
+    "source": ".output/server",
+    "codebase": "nuxt"
+  }
+}

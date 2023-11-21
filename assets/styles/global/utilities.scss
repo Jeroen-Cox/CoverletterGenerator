@@ -1,0 +1,23 @@
+@use 'sass:math';
+$default-browser-font-size: 16px;
+
+/// Returns the value in rem for a given pixel value.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in rem.
+
+@function rem($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'rem' {
+    @return $value;
+  } @else if $unit == 'em' {
+    @return math.div($unit, 1em) * 1rem;
+  } @else if $unit == 'px' {
+    @return math.div($value, $default-browser-font-size) * 1rem;
+  } @else {
+    @warn 'Value must be in px, em, or rem';
+    @return math.div($value, $default-browser-font-size) * 1rem;
+  }
+}

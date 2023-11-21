@@ -1,0 +1,30 @@
+@use 'vuetify' with (
+  $color-pack: false
+);
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('assets/fonts/Oswald-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Oswald';
+  src: url('assets/fonts/Oswald-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('assets/fonts/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+a {
+  cursor: pointer;
+  color: $primary-brand-color;
+  text-decoration: none;
+}

@@ -1,0 +1,24 @@
+{
+  "login": {
+    "title": "Log in",
+    "sub_title": "Please enter your details.",
+    "reset_title": "Reset password",
+    "reset_sub_title": "We will send an email with a link to reset your password",
+    "forgot": "Forgot password?",
+    "create_account": "Create account",
+    "log_in": "Log in",
+    "try_out": "Try out for free",
+    "reset": "Reset password",
+    "back_to_login": "Back to Login"
+  },
+  "create_account": {
+    "title": "Try out for free",
+    "sub_title": "Please enter your details.",
+    "submit_button": "Create account"
+  },
+  "application": {
+    "generate": "Generate coverletter",
+    "re_generate": "Improve coverletter",
+    "generate_new": "Generate coverletter and save application"
+  }
+}
