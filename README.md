@@ -1,19 +1,22 @@
 # CoverGP
 
-## 1: Setup:
+## 1: First install packages:
 
 ```
 yarn install
 ```
 
-## 2: Run:
+
+## Running the project in local development:
 
 ```
 yarn dev
 ```
-
-## Running the project in local development:
-
 ## Problems with types not recognized in for example nuxt.config.ts?
 
 Run yarn nuxi generate
+
+## Deploy to Firebase hosting
+```
+yarn deploy
+```
