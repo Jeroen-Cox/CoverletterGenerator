@@ -5,9 +5,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     ssr: false,
 
     theme: {
-      defaultTheme: 'CoverGPLightTheme',
+      defaultTheme: 'CoverletterGeneratorTheme',
       themes: {
-        CoverGPLightTheme
+        CoverletterGeneratorTheme
       }
     },
     defaults: { global: { ripple: false } }
@@ -15,7 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(vuetify)
 })
 
-const CoverGPLightTheme: ThemeDefinition = {
+const CoverletterGeneratorTheme: ThemeDefinition = {
   dark: false,
   colors: {
     background: '#F5F5F5',
