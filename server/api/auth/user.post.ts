@@ -1,10 +1,10 @@
-import { UserData } from '../../../types/userData.interface'
+
 import { authAdmin } from '../../utils/firebase'
 
 export default defineEventHandler(async (event) => {
-  const { sessionCookie } = await readBody(event)
+  const  {sessionCookieString} = await readBody(event)
   try {
-    const claim = await authAdmin.verifySessionCookie(sessionCookie)
+    const claim = await authAdmin.verifySessionCookie(sessionCookieString)
     return {
       statusCode: 200,
       claim: claim

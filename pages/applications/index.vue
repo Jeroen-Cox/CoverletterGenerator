@@ -17,18 +17,22 @@
 
 <script setup lang="ts">
 import { useApplicationsStore } from '@/stores/applications'
+import { useUserStore } from '@/stores/index'
 import { storeToRefs } from 'pinia'
 
 definePageMeta({
   name: 'applications',
-  layout: 'default'
+  layout: 'default',
+  
 })
-
+const userStore = useUserStore()
+    const { userAuthentication } = storeToRefs(userStore)
 const coverLettersStore = useApplicationsStore()
 const { coverLetters, selectedApplicationUid } = storeToRefs(coverLettersStore)
 
 onMounted(() => {
-  coverLettersStore.getApplications()
+  if(userAuthentication.value && userAuthentication.value.uid){ coverLettersStore.getApplications()}
+ 
 })
 </script>
 

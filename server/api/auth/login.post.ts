@@ -7,13 +7,13 @@ export default defineEventHandler(async (event) => {
   try {
     const options = {
       maxAge: expiresIn,
-      httpOnly: true,
+      httpOnly: process.env.NODE_ENV === 'production',
       secure: true,
       path: '/'
     }
 
     const authCookie = await authAdmin.createSessionCookie(token, { expiresIn })
-    setCookie(event, 'authCookie', authCookie, options)
+    setCookie(event, 'Authorization', authCookie, options)
 
     return {
       statusCode: 200,

@@ -45,7 +45,9 @@ const logOutUser = async () => {
 }
 
 onBeforeMount(() => {
-  userStore.getUserData(userStore.userAuthentication.uid)
+  if(userAuthentication.value && userAuthentication.value.uid){
+    userStore.getUserData(userAuthentication.value.uid)}
+  
 })
 const coverLettersStore = useApplicationsStore()
 const { applications, selectedApplicationUid } = storeToRefs(coverLettersStore)

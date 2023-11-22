@@ -76,6 +76,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function verifyUserServerSide(token: string) {
+    console.log("just before setting cookie")
     $fetch('/api/auth/login', {
       method: 'POST',
       body: { token: token }
@@ -107,10 +108,11 @@ export const useUserStore = defineStore('user', () => {
   }
 
   async function logOutUser() {
+    await navigateTo('/')
     await $fetch('/api/auth/logout', { method: 'POST' }).then(() => {
       resetUserData()
     })
-    await navigateTo('/')
+    
   }
 
   async function SendResetPasswordEmail(emailAddress: string) {
