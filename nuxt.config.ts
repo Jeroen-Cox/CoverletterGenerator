@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     'nuxt-icons',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     // eslint-disable-next-line require-await
     async (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) =>

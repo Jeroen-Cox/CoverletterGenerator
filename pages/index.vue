@@ -98,8 +98,8 @@ const submitForm = async () => {
   userStore.logInUser({ emailAddress: emailAddress.value, password: password.value })
 }
 
-const navigateToCreateAccountPage = async () => await navigateTo({ path: '/login/create' })
-const navigageToResetAccountPage = async () => await navigateTo({ path: '/login/reset' })
+const navigateToCreateAccountPage = async () => await navigateTo({ path: '/account/create' })
+const navigageToResetAccountPage = async () => await navigateTo({ path: '/account/reset' })
 </script>
 
 <style lang="scss" scoped>
