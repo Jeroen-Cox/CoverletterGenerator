@@ -109,9 +109,9 @@ export const useUserStore = defineStore(
     }
 
     async function logOutUser() {
-      await navigateTo('/')
-      await $fetch('/api/auth/logout', { method: 'POST' }).then(() => {
+      await $fetch('/api/auth/logout', { method: 'POST' }).then(async () => {
         resetUserData()
+        await navigateTo('/')
       })
     }
 
