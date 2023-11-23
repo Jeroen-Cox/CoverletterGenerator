@@ -12,7 +12,7 @@ describe.concurrent('Form validation methods', () => {
   })
   describe.concurrent('Email field validation', () => {
     it('Indicates the field value was indeed an email address', () => {
-      expect(isEmail('jeroen@thecloseapp.com')).toBe(true)
+      expect(isEmail('jeroencox@email.com')).toBe(true)
     }),
       it('Indicates the field value was not an email address', () => {
         expect(isEmail('jeroeniscool')).toBe('Invalid e-mail')
