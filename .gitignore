@@ -55,5 +55,8 @@ coverage/
 .nuxt
 .output
 
+#server firebase setup
+.server/utils/firebase
+
 # env file
 .env
