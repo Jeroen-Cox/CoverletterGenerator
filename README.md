@@ -1,6 +1,13 @@
 # Coverletter Generator
 
-A Vue3, Nuxt3, Typescript, Pinia, Firebase project to explore Server Side Rendering and using Nuxt's server to securely tap into external API's.
+A Vue 3, Nuxt 3, Typescript, Pinia, Firebase project to explore Server Side Rendering and using Nuxt's server to securely tap into external API's.
+
+## Features
+- Server Side Authentication using Nuxt 3 and Firebase
+- Global State using Pinia
+- Persisted Authentication state using Pinia-plugin-persistedstate
+- Securely tap into OpenAI API on the Server Side
+
 
 # How to use it:
 
