@@ -1,7 +1,11 @@
 <template>
   <v-app>
     <div class="main">
+      <div class="content">
+    <v-sheet rounded class="form-wrapper">
       <slot />
+      </v-sheet>
+      </div>
     </div>
   </v-app>
 </template>
@@ -20,4 +24,18 @@
   align-items: center;
   background-color: $primary-brand-color;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 350px;
+  max-width: 100%;
+}
+
+.form-wrapper {
+  padding: 2rem;
+}
+
+
 </style>

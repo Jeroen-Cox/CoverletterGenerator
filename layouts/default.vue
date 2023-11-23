@@ -1,18 +1,6 @@
 <template>
   <div id="total">
-    <div class="header">
-      <h1 class="title">CoverGP</h1>
-      <div>
-        <span v-if="userAuthentication && userAuthentication.email" class="user-text"
-          >User: {{ userAuthentication.email }}</span
-        >
-        <span v-if="userData && userData.credits" class="user-text">Credits: {{ userData.credits }}</span>
-        <v-btn @click.native="logOutUser" variant="outlined" color="white" data-testid="createAccountBtn"
-          >Log out</v-btn
-        >
-      </div>
-    </div>
-
+    <TopMenu/>
     <div class="main">
       <div class="left-panel">
         <v-btn variant="flat" color="primary" class="mb-2" @click.native="prepareNewApplication">New application</v-btn>
@@ -34,23 +22,10 @@
 </template>
 
 <script setup lang="ts">
+
 import { storeToRefs } from 'pinia'
-const userStore = useUserStore()
 const applicationStore = useApplicationsStore()
-
-const { loadingUserData, userAuthentication, userData } = storeToRefs(userStore)
-
-const logOutUser = async () => {
-  userStore.logOutUser()
-}
-
-onBeforeMount(() => {
-  if(userAuthentication.value && userAuthentication.value.uid){
-    userStore.getUserData(userAuthentication.value.uid)}
-  
-})
-const coverLettersStore = useApplicationsStore()
-const { applications, selectedApplicationUid } = storeToRefs(coverLettersStore)
+const { applications, selectedApplicationUid } = storeToRefs(applicationStore)
 
 const prepareNewApplication = async () => {
   applicationStore.resetApplicationForm()
@@ -60,8 +35,8 @@ const prepareNewApplication = async () => {
 const selectApplication = async (uid?: string) => {
   if (uid) {
     await navigateTo('/applications')
-    coverLettersStore.selectedApplicationUid = uid
-    coverLettersStore.getCoverLetters()
+    applicationStore.selectedApplicationUid = uid
+    applicationStore.getCoverLetters()
   }
 }
 </script>
@@ -89,10 +64,6 @@ const selectApplication = async (uid?: string) => {
 
 .title {
   color: $dark-primary-variant-2;
-}
-.user-text {
-  color: $dark-primary-variant-1;
-  margin-right: 1rem;
 }
 
 .main {

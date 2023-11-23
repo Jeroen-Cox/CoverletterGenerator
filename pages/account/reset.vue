@@ -1,6 +1,5 @@
 <template>
-  <div class="content">
-    <div>
+  
       <v-form v-model="formInvalid" @submit.prevent="submitForm" class="login-form">
         <h1 class="loginTitle">{{ $t('login.reset_title') }}</h1>
         <h2 class="loginSubtitle">{{ $t('login.reset_sub_title') }}</h2>
@@ -22,8 +21,7 @@
           color="primary"
           block
           :error="error"
-          class="mb-6"
-          :style="{ marginBottom: '16px' }"
+          class="mb-2"
           data-testid="loginBtn"
           >{{ $t('login.reset') }}</v-btn
         >
@@ -33,8 +31,7 @@
           variant="tonal"
           color="secondary"
           block
-          class="mt-6"
-          :style="{ marginBottom: '16px' }"
+          class="mb-0"
           >{{ $t('login.back_to_login') }}</v-btn
         >
 
@@ -48,8 +45,7 @@
           variant="tonal"
         ></v-alert>
       </v-form>
-    </div>
-  </div>
+   
 </template>
 
 <script setup lang="ts">
@@ -74,13 +70,7 @@ const submitForm = async () => {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 350px;
-  max-width: 100%;
-}
+
 .loginTitle {
   @include text-style-display-large;
   font-weight: bold;

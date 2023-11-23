@@ -1,6 +1,5 @@
 <template>
-  <div class="content">
-    <div>
+ 
       <v-form v-model="formInvalid" @submit.prevent="createAccount" class="login-form">
         <h1 class="loginTitle">{{ $t('create_account.title') }}</h1>
         <h2 class="loginSubtitle">{{ $t('create_account.sub_title') }}</h2>
@@ -31,12 +30,12 @@
           color="primary"
           block
           :error="errorMessage !== ''"
-          class="mb-6"
+          class="mb-2"
           :style="{ marginBottom: '16px' }"
           data-testid="loginBtn"
           >{{ $t('create_account.submit_button') }}</v-btn
         >
-        <v-btn @click.native="navigateToLoginPage" variant="tonal" color="secondary" block class="mt-6"
+        <v-btn @click.native="navigateToLoginPage" variant="tonal" color="secondary" block class="mb-0"
           >Back to login</v-btn
         >
 
@@ -50,8 +49,8 @@
           variant="tonal"
         ></v-alert>
       </v-form>
-    </div>
-  </div>
+   
+ 
 </template>
 
 <script setup lang="ts">
@@ -78,13 +77,7 @@ const createAccount = async () => {
 </script>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 350px;
-  max-width: 100%;
-}
+
 .loginTitle {
   @include text-style-display-large;
   font-weight: bold;

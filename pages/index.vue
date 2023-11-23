@@ -1,6 +1,5 @@
 <template>
-  <div class="content">
-    <v-sheet rounded class="form-wrapper">
+ 
       <v-form v-model="formInvalid" @submit.prevent="submitForm" class="login-form">
         <h1 class="loginTitle">{{ $t('login.title') }}</h1>
         <h2 class="loginSubtitle">{{ $t('login.sub_title') }}</h2>
@@ -36,8 +35,7 @@
           color="primary"
           block
           :error="error"
-          class="mb-6"
-          :style="{ marginBottom: '16px' }"
+          class="mb-2"
           data-testid="loginBtn"
           >{{ $t('login.log_in') }}</v-btn
         >
@@ -47,8 +45,7 @@
           variant="flat"
           color="secondary"
           block
-          class="mt-6"
-          :style="{ marginBottom: '16px' }"
+          class="mb-2"
           data-testid="createAccountBtn"
           >{{ $t('login.try_out') }}</v-btn
         >
@@ -59,8 +56,6 @@
           color="error"
           block
           :error="error"
-          class="mb-6"
-          :style="{ marginBottom: '16px' }"
           >{{ $t('login.forgot') }}</v-btn
         >
 
@@ -73,8 +68,7 @@
           type="error"
           variant="tonal"
         ></v-alert> </v-form
-    ></v-sheet>
-  </div>
+    >
 </template>
 
 <script setup lang="ts">
@@ -103,13 +97,7 @@ const navigageToResetAccountPage = async () => await navigateTo({ path: '/accoun
 </script>
 
 <style lang="scss" scoped>
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 350px;
-  max-width: 100%;
-}
+
 .loginTitle {
   @include text-style-display-large;
   font-weight: bold;
@@ -130,9 +118,7 @@ const navigageToResetAccountPage = async () => await navigateTo({ path: '/accoun
   margin: 1rem 0;
 }
 
-.form-wrapper {
-  padding: 2rem;
-}
+
 .login-form {
   width: 100%;
   max-width: 450px;
