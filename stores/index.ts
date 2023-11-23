@@ -32,8 +32,9 @@ export const useUserStore = defineStore(
       errorMessage.value = ''
 
       createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          verifyUserServerSide(userCredential.user.uid)
+        .then(async (userCredential) => {
+          const token = await getIdToken(userCredential.user)
+          verifyUserServerSide(token)
           saveUserInFirestore(userCredential.user.uid)
           loadingUserData.value = false
         })

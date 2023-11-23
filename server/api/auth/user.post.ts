@@ -1,9 +1,7 @@
-
 import { authAdmin } from '../../utils/firebase'
 
 export default defineEventHandler(async (event) => {
   const cookies = parseCookies(event)
-  console.log(cookies)
   try {
     const claim = await authAdmin.verifySessionCookie(cookies.Authorization)
     return {

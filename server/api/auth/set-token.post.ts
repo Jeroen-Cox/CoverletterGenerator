@@ -11,15 +11,13 @@ export default defineEventHandler(async (event) => {
       secure: true,
       path: '/'
     }
-
     const authCookie = await authAdmin.createSessionCookie(token, { expiresIn })
     setCookie(event, 'Authorization', authCookie, options)
-
     return {
       statusCode: 200,
       message: 'Auth successful'
     }
   } catch (error) {
-    throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
+    throw createError({ statusCode: 401, statusMessage: 'Unauthorized to set token' })
   }
 })
