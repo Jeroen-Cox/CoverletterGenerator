@@ -6,7 +6,7 @@
             >User: {{ userAuthentication.email }}</span
           >
           <span v-if="userData && userData.credits" class="user-text">Credits: {{ userData.credits }}</span>
-          <v-btn @click.native="logOutUser" variant="outlined" color="white" data-testid="createAccountBtn"
+          <v-btn @click.native="logOutUser" variant="outlined" color="white" data-testid="logOutBtn"
             >Log out</v-btn
           >
         </div>
@@ -22,7 +22,7 @@
     userStore.logOutUser()
   }
   
-  onBeforeMount(() => {
+  onMounted(() => {
     if(userAuthentication.value && userAuthentication.value.uid){
       userStore.getUserData(userAuthentication.value.uid)}
     

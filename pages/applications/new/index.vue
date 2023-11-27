@@ -22,7 +22,7 @@ definePageMeta({
 const coverLettersStore = useApplicationsStore()
 const { coverLetters, selectedApplicationUid } = storeToRefs(coverLettersStore)
 
-onBeforeMount(() => {
+onMounted(() => {
   coverLettersStore.getApplications()
 })
 </script>

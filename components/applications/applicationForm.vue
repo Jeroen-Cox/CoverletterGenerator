@@ -106,7 +106,7 @@
 import { useApplicationsStore } from '@/stores/applications'
 import { ApplicationInfo } from '~/types/applicationInfo.interface'
 const props = defineProps({
-  applicationUid: String,
+  applicationUid: { type: String, required: false, default: '' },
   newApplication: { type: Boolean, required: false, default: false }
 })
 
@@ -125,6 +125,7 @@ const data: ApplicationInfo = reactive({
 })
 
 watch(applicationData, (applicationData, prevApplicationData) => {
+  console.log(applicationData)
   if (applicationData) {
     data.company = applicationData.company
     data.jobTitle = applicationData.jobTitle

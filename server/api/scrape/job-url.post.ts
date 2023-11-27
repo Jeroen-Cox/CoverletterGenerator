@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio'
 export default defineEventHandler(async (event) => {
   const { jobUrl } = await readBody(event)
   try {
-    const data = await $fetch(`${jobUrl}`, {
+    const data: string = await $fetch(`${jobUrl}`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_7; en-US) Gecko/20100101 Firefox/65.0'
       },
