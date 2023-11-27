@@ -7,6 +7,5 @@ export interface ApplicationInfo {
   achievement_2?: string
   achievement_3?: string
   jobUrl: string
-  jobDescription?: string
   linkedinUrl: string
 }
