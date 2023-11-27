@@ -7,6 +7,8 @@ The Coverletter generator aka CoverGP can be used by people applying to jobs to 
 
 ## Features
 - Server Side Authentication using Nuxt 3 and Firebase
+- Deployment using Firebase Hosting
+- Database using Firebase Database
 - Global State using Pinia
 - Persisted Authentication state using Pinia-plugin-persistedstate
 - Securely tap into OpenAI API on the Server Side
