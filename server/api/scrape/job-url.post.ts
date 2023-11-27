@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio'
-import * as fs from 'fs'
+
 export default defineEventHandler(async (event) => {
   const { jobUrl } = await readBody(event)
   try {
