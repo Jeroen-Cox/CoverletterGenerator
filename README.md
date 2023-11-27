@@ -2,16 +2,23 @@
 
 A Vue 3, Nuxt 3, Typescript, Pinia, Firebase project to explore Server Side Rendering and using Nuxt's server to securely tap into external API's.
 
+## User Story
+The Coverletter generator aka CoverGP can be used by people applying to jobs to quickly generate coverletters. The user can register for, and login to a dashboard where the user can manage job applications. All a user has to do is provide a job title, the name of the company, a link to the vacancy, a link to the user's Linkedin profile, and three achievements relevant for the position. With the click of a button a coverletter is then generated. The user can change data and improve coverletters without losing previous results. 
+
 ## Features
 - Server Side Authentication using Nuxt 3 and Firebase
 - Global State using Pinia
 - Persisted Authentication state using Pinia-plugin-persistedstate
 - Securely tap into OpenAI API on the Server Side
+- Web scraping using Cheerio
 
 ## Example screenshot
+Disclaimer: No real form submission visible in this screenshot.
 
 ![covergp demo](https://github.com/Jeroen-Cox/CoverletterGenerator/assets/92381509/71e9604a-625d-442b-89a1-d508e875715f)
 
+## Limitations
+Web scraping will not always work as job platforms will try to hide relevant data behind authentication walls, or will simply make sure that webscrapers are recognized and stopped from fetching data. This project is meant as a exploration of methods, techniques and technologies, not as a final product. 
 # How to get ready for usage:
 
 ## 1: First install packages:
