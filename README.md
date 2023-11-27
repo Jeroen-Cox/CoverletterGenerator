@@ -8,6 +8,9 @@ A Vue 3, Nuxt 3, Typescript, Pinia, Firebase project to explore Server Side Rend
 - Persisted Authentication state using Pinia-plugin-persistedstate
 - Securely tap into OpenAI API on the Server Side
 
+## Example screenshot
+
+![covergp demo](https://github.com/Jeroen-Cox/CoverletterGenerator/assets/92381509/71e9604a-625d-442b-89a1-d508e875715f)
 
 # How to get ready for usage:
 
