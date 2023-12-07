@@ -1,5 +1,5 @@
 <template>
-  <v-form v-model="formInvalid" @submit.prevent="generateCoverletter" class="generate-form">
+  <v-form v-model="formValid" @submit.prevent="generateCoverletter" class="generate-form">
     <h1>Job info</h1>
     <v-text-field
       variant="underlined"
@@ -81,7 +81,7 @@
     />
     <v-btn
       v-if="creatingNewApplication"
-      :disabled="!formInvalid"
+      :disabled="!formValid"
       :loading="generatingCoverletter"
       type="submit"
       variant="flat"
@@ -91,7 +91,7 @@
     >
     <v-btn
       v-else
-      :disabled="!formInvalid"
+      :disabled="!formValid"
       :loading="generatingCoverletter"
       type="submit"
       variant="flat"
@@ -106,11 +106,10 @@
 import { useApplicationsStore } from '@/stores/applications'
 import { ApplicationInfo } from '~/types/applicationInfo.interface'
 const props = defineProps({
-  applicationUid: { type: String, required: false, default: '' },
-  newApplication: { type: Boolean, required: false, default: false }
+  applicationUid: { type: String, required: false, default: '' }
 })
 
-const formInvalid = ref(true)
+const formValid = ref(false)
 const applicationStore = useApplicationsStore()
 const { generatingCoverletter, applicationData, coverLetters, creatingNewApplication } = storeToRefs(applicationStore)
 
@@ -125,7 +124,6 @@ const data: ApplicationInfo = reactive({
 })
 
 watch(applicationData, (applicationData, prevApplicationData) => {
-  console.log(applicationData)
   if (applicationData) {
     data.company = applicationData.company
     data.jobTitle = applicationData.jobTitle
@@ -138,10 +136,11 @@ watch(applicationData, (applicationData, prevApplicationData) => {
 })
 
 const generateCoverletter = async () => {
-  if (creatingNewApplication) {
+  if (creatingNewApplication.value) {
     await applicationStore.addApplicationFirebase(data).then(async (uid) => {
       applicationStore.selectedApplicationUid = uid
-      await navigateTo('/applications')
+      applicationStore.creatingNewApplication = false
+      applicationStore.getApplications()
     })
   } else {
     await applicationStore.updateApplicationFirebase(data)

@@ -14,12 +14,12 @@ definePageMeta({
 })
 const userStore = useUserStore()
 const { userAuthentication } = storeToRefs(userStore)
-const coverLettersStore = useApplicationsStore()
-const { selectedApplicationUid } = storeToRefs(coverLettersStore)
+const applicationStore = useApplicationsStore()
+const { selectedApplicationUid } = storeToRefs(applicationStore)
 
 onMounted(() => {
   if (userAuthentication.value && userAuthentication.value.uid) {
-    coverLettersStore.getApplications()
+    applicationStore.getApplications()
   }
 })
 </script>

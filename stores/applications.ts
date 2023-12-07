@@ -47,7 +47,9 @@ export const useApplicationsStore = defineStore('applications', () => {
               })
             }
           }
-        } catch (e) {}
+        } catch (e) {
+          console.log('something went wrong')
+        }
       }
 
       generatingCoverletter.value = false
