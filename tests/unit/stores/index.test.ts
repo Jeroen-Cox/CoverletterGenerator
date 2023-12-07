@@ -7,8 +7,8 @@ describe('initial state', () => {
   })
   it('keeps track of user authentication status', () => {
     const store = useUserStore()
-    expect(store.isUserSignedIn).toBe(false)
-    expect(store.loading).toBe(false)
+    expect(store.userData).toBe(false)
+    expect(store.loadingUserData).toBe(false)
   })
 })
 

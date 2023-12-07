@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { required, isEmail } from '@/composables/useValidation'
 
-describe.concurrent('Form validation methods', () => {
+describe('Form validation methods', () => {
   describe('Required field validation', () => {
     it('Indicates the field was filled in', () => {
       expect(required('example string')).toBe(true)
@@ -10,7 +10,7 @@ describe.concurrent('Form validation methods', () => {
         expect(required('')).toBe('Field is required')
       })
   })
-  describe.concurrent('Email field validation', () => {
+  describe('Email field validation', () => {
     it('Indicates the field value was indeed an email address', () => {
       expect(isEmail('jeroencox@email.com')).toBe(true)
     }),
@@ -18,4 +18,6 @@ describe.concurrent('Form validation methods', () => {
         expect(isEmail('jeroeniscool')).toBe('Invalid e-mail')
       })
   })
+
+  
 })

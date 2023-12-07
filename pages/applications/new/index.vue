@@ -4,7 +4,12 @@
     <div class="coverLetter-list">
       <h1>Coverletters: {{ coverLetters.length }}</h1>
       <TransitionGroup name="listTransition">
-        <cover-letter v-for="coverLetter in coverLetters" :key="coverLetter.uid" :content="coverLetter.content" />
+        <cover-letter
+          v-for="(coverLetter, i) in coverLetters"
+          :key="coverLetter.uid"
+          :content="coverLetter.content"
+          :index="coverLetters.length - i"
+        />
       </TransitionGroup>
     </div>
   </div>

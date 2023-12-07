@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     client: false
   },
   modules: [
+    'dayjs-nuxt',
     '@nuxtjs/i18n',
     'nuxt-icons',
     '@pinia/nuxt',

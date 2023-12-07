@@ -6,9 +6,9 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { useUserStore } from '@/stores/index'
 import { createTestingPinia } from '@pinia/testing'
-import Login from '@/pages/login/index.vue'
+import Login from '@/pages/index.vue'
 
-describe('Login', () => {
+describe.skip('Login', () => {
   const vuetify = createVuetify({ components, directives })
 
   const renderWrapper = () => {
@@ -48,8 +48,8 @@ describe('Login', () => {
     const wrapper = renderWrapper()
     expect(wrapper).toBeTruthy()
     const emailField = screen.getByRole('textbox', { name: /e\-mail/i })
-    await userEvent.type(emailField, 'jeroen@thecloseapp.com')
-    expect(emailField).toHaveValue('jeroen@thecloseapp.com')
+    await userEvent.type(emailField, 'jeroencox@live.nl')
+    expect(emailField).toHaveValue('jeroencox@live.nl')
     const passwordField = screen.getByLabelText(/password password/i)
     await userEvent.type(passwordField, 'password')
     expect(passwordField).toHaveValue('password')

@@ -5,10 +5,11 @@
       <h1>Coverletters: {{ coverLetters.length }}</h1>
       <TransitionGroup name="listTransition">
         <cover-letter
-          v-for="coverLetter in coverLetters"
+          v-for="(coverLetter, i) in coverLetters"
           :key="coverLetter.uid"
           :content="coverLetter.content"
           :date="coverLetter.creationDate.toString()"
+          :index="coverLetters.length - i"
         />
       </TransitionGroup>
     </div>
@@ -22,17 +23,17 @@ import { storeToRefs } from 'pinia'
 
 definePageMeta({
   name: 'applications',
-  layout: 'default',
-  
+  layout: 'default'
 })
 const userStore = useUserStore()
-    const { userAuthentication } = storeToRefs(userStore)
+const { userAuthentication } = storeToRefs(userStore)
 const coverLettersStore = useApplicationsStore()
 const { coverLetters, selectedApplicationUid } = storeToRefs(coverLettersStore)
 
 onMounted(() => {
-  if(userAuthentication.value && userAuthentication.value.uid){ coverLettersStore.getApplications()}
- 
+  if (userAuthentication.value && userAuthentication.value.uid) {
+    coverLettersStore.getApplications()
+  }
 })
 </script>
 

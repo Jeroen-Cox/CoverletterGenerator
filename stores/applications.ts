@@ -30,6 +30,8 @@ export const useApplicationsStore = defineStore('applications', () => {
 
           if (response) {
             const applicationData = formData
+            applicationData.jobTitle = response.job.jobTitle
+            applicationData.company = response.job.company
             const data = await $fetch<string>('/api/chat-completion', {
               method: 'POST',
               body: { applicationData: applicationData }
