@@ -1,6 +1,5 @@
 <template>
-  <div class="right-panel">
-    <application-form :application-uid="selectedApplicationUid" new-application />
+  <div class="scroll-wrapper">
     <div class="coverLetter-list">
       <h1>Coverletters: {{ coverLetters.length }}</h1>
       <TransitionGroup name="listTransition">
@@ -8,6 +7,7 @@
           v-for="(coverLetter, i) in coverLetters"
           :key="coverLetter.uid"
           :content="coverLetter.content"
+          :date="coverLetter.creationDate.toString()"
           :index="coverLetters.length - i"
         />
       </TransitionGroup>
@@ -16,52 +16,25 @@
 </template>
 
 <script setup lang="ts">
-import { useApplicationsStore } from '@/stores/applications'
-import { storeToRefs } from 'pinia'
-
-definePageMeta({
-  name: 'newApplication',
-  layout: 'default'
-})
-
 const coverLettersStore = useApplicationsStore()
-const { coverLetters, selectedApplicationUid } = storeToRefs(coverLettersStore)
-
-onMounted(() => {
-  coverLettersStore.getApplications()
-})
+const { coverLetters } = storeToRefs(coverLettersStore)
 </script>
 
 <style lang="scss" scoped>
-.right-panel {
-  display: flex;
-  flex: 5;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow-y: auto;
-}
-
-.loader-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .coverLetter-list {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: 2rem 4rem 2rem 0rem;
+  padding: 2rem 4rem 2rem 2rem;
   flex: 2;
 }
-.coverletter-cards {
-  margin-bottom: 1rem;
-}
 
+.scroll-wrapper {
+  height: 100%;
+  overflow-y: auto;
+}
 .listTransition-move,
 .listTransition-enter-active,
 .listTransition-leave-active {
@@ -76,4 +49,3 @@ onMounted(() => {
   position: absolute;
 }
 </style>
-stores/applications

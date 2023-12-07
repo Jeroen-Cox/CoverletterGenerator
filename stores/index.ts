@@ -85,7 +85,7 @@ export const useUserStore = defineStore(
       })
         .then(() => {
           signOut(auth).then(async () => {
-            await navigateTo('/applications/new')
+            await navigateTo('/applications')
           })
         })
         .catch((e) => {

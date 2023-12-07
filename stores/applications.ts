@@ -11,9 +11,11 @@ export const useApplicationsStore = defineStore('applications', () => {
   const loadingApplications = ref<boolean>(false)
   const loadingCoverletters = ref<boolean>(false)
   const generatingCoverletter = ref<boolean>(false)
+  const creatingNewApplication = ref<boolean>(true)
   const selectedApplicationUid = ref('')
 
   function resetApplicationForm() {
+    creatingNewApplication.value = true
     coverLetters.value = []
     selectedApplicationUid.value = ''
   }
@@ -190,6 +192,7 @@ export const useApplicationsStore = defineStore('applications', () => {
     generatingCoverletter,
     coverLetters,
     selectedApplicationUid,
+    creatingNewApplication,
     addApplicationFirebase,
     updateApplicationFirebase,
     resetApplicationForm,

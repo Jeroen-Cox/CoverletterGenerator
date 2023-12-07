@@ -1,41 +1,41 @@
 <template>
   <div id="total">
-    <TopMenu/>
+    <TopMenu />
     <div class="main">
       <div class="left-panel">
-        <v-btn variant="flat" color="primary" class="mb-2" @click.native="prepareNewApplication">New application</v-btn>
         <div class="left-panel__applications-wrapper">
           <v-card
             v-for="application in applications"
             @click.native="selectApplication(application.uid)"
-            :variant="application.uid === selectedApplicationUid ? 'tonal' : 'outlined'"
+            :variant="application.uid === selectedApplicationUid ? 'flat' : 'outlined'"
             class="left-panel__applications-wrapper__application-cards"
-            color="#979797"
+            :color="application.uid === selectedApplicationUid ? '#ffffff' : '#cccccc'"
             :title="application.company"
             :subtitle="application.jobTitle"
           />
         </div>
+        <v-btn variant="flat" color="primary" class="mb-2" @click.native="prepareNewApplication">New application</v-btn>
       </div>
-      <slot />
+      <div class="right-panel">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
 import { storeToRefs } from 'pinia'
 const applicationStore = useApplicationsStore()
 const { applications, selectedApplicationUid } = storeToRefs(applicationStore)
 
 const prepareNewApplication = async () => {
   applicationStore.resetApplicationForm()
-  await navigateTo('/applications/new')
 }
 
 const selectApplication = async (uid?: string) => {
   if (uid) {
-    await navigateTo('/applications')
     applicationStore.selectedApplicationUid = uid
+    applicationStore.creatingNewApplication = false
     applicationStore.getCoverLetters()
   }
 }
@@ -85,7 +85,7 @@ const selectApplication = async (uid?: string) => {
   justify-content: flex-start;
   align-items: stretch;
   padding: 1rem 1rem 0 1rem;
-  background-color: white;
+  background-color: $dark-primary-variant-2;
 
   &__applications-wrapper {
     width: 100%;
@@ -101,17 +101,14 @@ const selectApplication = async (uid?: string) => {
   }
 }
 
-.listTransition-move,
-.listTransition-enter-active,
-.listTransition-leave-active {
-  transition: all 0.5s ease;
-}
-.listTransition-enter-from,
-.listTransition-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-.listTransition-leave-active {
-  position: absolute;
+.right-panel {
+  position: relative;
+  display: flex;
+  flex: 5;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+  height: calc(100vh - $menuHeight);
 }
 </style>

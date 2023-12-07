@@ -80,7 +80,7 @@
       :rules="[required]"
     />
     <v-btn
-      v-if="newApplication"
+      v-if="creatingNewApplication"
       :disabled="!formInvalid"
       :loading="generatingCoverletter"
       type="submit"
@@ -112,7 +112,7 @@ const props = defineProps({
 
 const formInvalid = ref(true)
 const applicationStore = useApplicationsStore()
-const { generatingCoverletter, applicationData, coverLetters } = storeToRefs(applicationStore)
+const { generatingCoverletter, applicationData, coverLetters, creatingNewApplication } = storeToRefs(applicationStore)
 
 const data: ApplicationInfo = reactive({
   company: applicationData.value?.company ?? '',
@@ -138,7 +138,7 @@ watch(applicationData, (applicationData, prevApplicationData) => {
 })
 
 const generateCoverletter = async () => {
-  if (props.newApplication) {
+  if (creatingNewApplication) {
     await applicationStore.addApplicationFirebase(data).then(async (uid) => {
       applicationStore.selectedApplicationUid = uid
       await navigateTo('/applications')
@@ -157,12 +157,14 @@ const generateCoverletter = async () => {
 }
 
 .generate-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   flex: 1;
   min-width: 450px;
-  margin: 2rem 4rem 2rem 4rem;
+  height: 100%;
+  padding: 2rem 4rem 2rem 4rem;
+  overflow-y: auto;
 }
 </style>
-stores/applications

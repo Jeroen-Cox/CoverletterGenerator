@@ -1,19 +1,6 @@
 <template>
-  <div class="right-panel">
-    <application-form :application-uid="selectedApplicationUid" />
-    <div class="coverLetter-list">
-      <h1>Coverletters: {{ coverLetters.length }}</h1>
-      <TransitionGroup name="listTransition">
-        <cover-letter
-          v-for="(coverLetter, i) in coverLetters"
-          :key="coverLetter.uid"
-          :content="coverLetter.content"
-          :date="coverLetter.creationDate.toString()"
-          :index="coverLetters.length - i"
-        />
-      </TransitionGroup>
-    </div>
-  </div>
+  <application-form :application-uid="selectedApplicationUid" />
+  <CoverLetterList />
 </template>
 
 <script setup lang="ts">
@@ -28,7 +15,7 @@ definePageMeta({
 const userStore = useUserStore()
 const { userAuthentication } = storeToRefs(userStore)
 const coverLettersStore = useApplicationsStore()
-const { coverLetters, selectedApplicationUid } = storeToRefs(coverLettersStore)
+const { selectedApplicationUid } = storeToRefs(coverLettersStore)
 
 onMounted(() => {
   if (userAuthentication.value && userAuthentication.value.uid) {
@@ -37,44 +24,4 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss" scoped>
-.right-panel {
-  display: flex;
-  flex: 5;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow-y: auto;
-}
-
-.loader-wrapper {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.coverLetter-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  padding: 2rem 4rem 2rem 0rem;
-  flex: 2;
-}
-
-.listTransition-move,
-.listTransition-enter-active,
-.listTransition-leave-active {
-  transition: all 0.5s ease;
-}
-.listTransition-enter-from,
-.listTransition-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-.listTransition-leave-active {
-  position: absolute;
-}
-</style>
+<style lang="scss" scoped></style>

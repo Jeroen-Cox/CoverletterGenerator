@@ -17,7 +17,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
     } else {
       if (allowedRoutes.includes(to.path)) {
-        return navigateTo('/applications/new')
+        return navigateTo('/applications')
       }
     }
   }
