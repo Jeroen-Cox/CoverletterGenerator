@@ -18,6 +18,4 @@ describe('Form validation methods', () => {
         expect(isEmail('jeroeniscool')).toBe('Invalid e-mail')
       })
   })
-
-  
 })
