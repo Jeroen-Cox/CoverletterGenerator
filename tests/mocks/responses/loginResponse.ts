@@ -1,6 +1,0 @@
-export const loginResponse = {
-  token:
-    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpX2J1aWxkZXIuY2xvc2UudGVzdFwvYXBpXC9sb2dpbiIsImlhdCI6MTY4Nzg1OTc1NSwiZXhwIjoxNjg4NDY0NTU1LCJuYmYiOjE2ODc4NTk3NTUsImp0aSI6IktaeXcxSjRJRDlaS1JZWmYiLCJzdWIiOjQ4NSwicHJ2IjoiMjE4NTAwMzA1ZDFiNDllOWFhZmU2Nzg0ZWNmMWY1NTYwNDQyMDEzNCJ9.Tjc8QmvfG8ijM6sckNlMYUwZRuDQxf6GuhZIA36mu8c',
-  token_type: 'bearer',
-  expires_in: 10080
-}
