@@ -105,6 +105,7 @@
 <script setup lang="ts">
 import { useApplicationsStore } from '@/stores/applications'
 import { ApplicationInfo } from '~/types/applicationInfo.interface'
+
 const props = defineProps({
   applicationUid: { type: String, required: false, default: '' }
 })
