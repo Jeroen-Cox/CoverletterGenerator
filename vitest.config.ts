@@ -1,12 +1,18 @@
 /// <reference types="vitest"/>
 import { fileURLToPath } from 'url'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import AutoImport from 'unplugin-auto-import/vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import vue from '@vitejs/plugin-vue'
-import path from 'path'
 
 export default defineConfig({
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    deps: {
+      inline: ['vuetify']
+    }
+  },
   plugins: [
     vue(),
     tsconfigPaths(),
@@ -15,13 +21,7 @@ export default defineConfig({
       imports: ['vue', 'vue/macros', 'pinia']
     })
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    deps: {
-      inline: ['vuetify']
-    }
-  },
+
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('.', import.meta.url)),

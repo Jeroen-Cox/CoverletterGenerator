@@ -1,9 +1,10 @@
 <template>
   <div class="scroll-wrapper">
     <div class="coverLetter-list">
-      <h1>Coverletters: {{ coverLetters.length }}</h1>
+      <h1>Coverletters: {{ coverLetters ? coverLetters.length : '' }}</h1>
       <TransitionGroup name="listTransition">
         <cover-letter
+          v-if="coverLetters"
           v-for="(coverLetter, i) in coverLetters"
           :key="coverLetter.uid"
           :content="coverLetter.content"
@@ -16,8 +17,10 @@
 </template>
 
 <script setup lang="ts">
-const coverLettersStore = useApplicationsStore()
-const { coverLetters } = storeToRefs(coverLettersStore)
+import { Coverletter } from 'types/coverLetter.interface'
+const props = defineProps({
+  coverLetters: { type: Array<Coverletter> }
+})
 </script>
 
 <style lang="scss" scoped>

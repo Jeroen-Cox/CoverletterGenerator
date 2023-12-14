@@ -1,74 +1,68 @@
 <template>
- 
-      <v-form v-model="formInvalid" @submit.prevent="submitForm" class="login-form">
-        <h1 class="loginTitle">{{ $t('login.title') }}</h1>
-        <h2 class="loginSubtitle">{{ $t('login.sub_title') }}</h2>
-        <h1 class="fieldLabel">Email</h1>
-        <v-text-field
-          variant="outlined"
-          v-model="emailAddress"
-          label="E-mail"
-          placeholder="john@doe.com"
-          :rules="[required, isEmail]"
-          :error="error"
-        />
-        <transition>
-          <h1 class="fieldLabel">Password</h1>
-        </transition>
-        <transition>
-          <v-text-field
-            variant="outlined"
-            v-model="password"
-            type="password"
-            label="Password"
-            :rules="[required]"
-            class="mb-0"
-            :error="error"
-          />
-        </transition>
+  <v-form v-model="formInvalid" @submit.prevent="submitForm" class="login-form">
+    <h1 class="loginTitle">{{ $t('login.title') }}</h1>
+    <h2 class="loginSubtitle">{{ $t('login.sub_title') }}</h2>
+    <h3 class="fieldLabel">Email</h3>
+    <v-text-field
+      variant="outlined"
+      v-model="emailAddress"
+      label="E-mail"
+      placeholder="john@doe.com"
+      :rules="[required, isEmail]"
+      :error="error"
+    />
+    <transition>
+      <h1 class="fieldLabel">Password</h1>
+    </transition>
+    <transition>
+      <v-text-field
+        variant="outlined"
+        v-model="password"
+        type="password"
+        label="Password"
+        :rules="[required]"
+        class="mb-0"
+        :error="error"
+      />
+    </transition>
 
-        <v-btn
-          :loading="loadingUserData"
-          :disabled="!formInvalid"
-          type="submit"
-          variant="flat"
-          color="primary"
-          block
-          :error="error"
-          class="mb-2"
-          data-testid="loginBtn"
-          >{{ $t('login.log_in') }}</v-btn
-        >
-
-        <v-btn
-          @click.native="navigateToCreateAccountPage"
-          variant="flat"
-          color="secondary"
-          block
-          class="mb-2"
-          data-testid="createAccountBtn"
-          >{{ $t('login.try_out') }}</v-btn
-        >
-
-        <v-btn
-          @click.native="navigageToResetAccountPage"
-          variant="plain"
-          color="error"
-          block
-          :error="error"
-          >{{ $t('login.forgot') }}</v-btn
-        >
-
-        <v-alert
-          v-if="error"
-          closable
-          class="mt-2"
-          title="Invalid credentials"
-          :text="errorMessage"
-          type="error"
-          variant="tonal"
-        ></v-alert> </v-form
+    <v-btn
+      :loading="loadingUserData"
+      :disabled="!formInvalid"
+      type="submit"
+      variant="flat"
+      color="primary"
+      block
+      :error="error"
+      class="mb-2"
+      data-testid="loginBtn"
+      >{{ $t('login.log_in') }}</v-btn
     >
+
+    <v-btn
+      @click.native="navigateToCreateAccountPage"
+      variant="flat"
+      color="secondary"
+      block
+      class="mb-2"
+      data-testid="createAccountBtn"
+      >{{ $t('login.try_out') }}</v-btn
+    >
+
+    <v-btn @click.native="navigageToResetAccountPage" variant="plain" color="error" block :error="error">{{
+      $t('login.forgot')
+    }}</v-btn>
+
+    <v-alert
+      v-if="error"
+      closable
+      class="mt-2"
+      title="Invalid credentials"
+      :text="errorMessage"
+      type="error"
+      variant="tonal"
+    ></v-alert>
+  </v-form>
 </template>
 
 <script setup lang="ts">
@@ -97,7 +91,6 @@ const navigageToResetAccountPage = async () => await navigateTo({ path: '/accoun
 </script>
 
 <style lang="scss" scoped>
-
 .loginTitle {
   @include text-style-display-large;
   font-weight: bold;
@@ -117,7 +110,6 @@ const navigageToResetAccountPage = async () => await navigateTo({ path: '/accoun
   text-align: left;
   margin: 1rem 0;
 }
-
 
 .login-form {
   width: 100%;

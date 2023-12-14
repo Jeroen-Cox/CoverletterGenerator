@@ -1,6 +1,6 @@
 <template>
   <application-form :application-uid="selectedApplicationUid" />
-  <CoverLetterList />
+  <CoverLetterList :coverletters="coverLetters" />
 </template>
 
 <script setup lang="ts">
@@ -15,7 +15,7 @@ definePageMeta({
 const userStore = useUserStore()
 const { userAuthentication } = storeToRefs(userStore)
 const applicationStore = useApplicationsStore()
-const { selectedApplicationUid } = storeToRefs(applicationStore)
+const { selectedApplicationUid, coverLetters } = storeToRefs(applicationStore)
 
 onMounted(() => {
   if (userAuthentication.value && userAuthentication.value.uid) {

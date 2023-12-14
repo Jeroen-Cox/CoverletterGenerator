@@ -1,10 +1,9 @@
 import { addDoc, collection, getDocs, orderBy, query, updateDoc, doc, DocumentReference } from 'firebase/firestore'
 import { ApplicationInfo } from '~/types/applicationInfo.interface'
 import { Coverletter } from '~/types/coverLetter.interface'
+import { useUserStore } from 'stores'
 
 export const useApplicationsStore = defineStore('applications', () => {
-  const { db } = useFirebaseClient()
-
   const userStore = useUserStore()
 
   const coverLetters = ref<Coverletter[]>([])
