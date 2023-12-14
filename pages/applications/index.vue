@@ -1,6 +1,6 @@
 <template>
   <application-form :application-uid="selectedApplicationUid" />
-  <CoverLetterList :coverletters="coverLetters" />
+  <CoverLetterList :cover-letters="coverLetters" />
 </template>
 
 <script setup lang="ts">

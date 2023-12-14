@@ -4,12 +4,11 @@
       <h1>Coverletters: {{ coverLetters ? coverLetters.length : '' }}</h1>
       <TransitionGroup name="listTransition">
         <cover-letter
-          v-if="coverLetters"
           v-for="(coverLetter, i) in coverLetters"
           :key="coverLetter.uid"
           :content="coverLetter.content"
           :date="coverLetter.creationDate.toString()"
-          :index="coverLetters.length - i"
+          :index="coverLetters ? coverLetters.length - i : 0"
         />
       </TransitionGroup>
     </div>
@@ -18,7 +17,7 @@
 
 <script setup lang="ts">
 import { Coverletter } from 'types/coverLetter.interface'
-const props = defineProps({
+defineProps({
   coverLetters: { type: Array<Coverletter> }
 })
 </script>
